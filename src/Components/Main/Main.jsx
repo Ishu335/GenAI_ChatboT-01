@@ -35,13 +35,13 @@ const Main = () => {
             <div className="search-box">
                 <input type="text" placeholder='Enter the Prompt here' />
                 <div>
-                    <img src={assets.gallery_icon} alt="" srcset="" />
-                    <img src={assets.mic_icon} alt="" srcset="" />
-                    <img src={assets.send_icon} alt="" srcset="" />
+                    <img src={assets.gallery_icon} alt=""  />
+                    <img src={assets.mic_icon} alt="" />
+                    <img src={assets.send_icon} alt=""  />
                 </div>
             </div>
             <p className='botton-info'>
-                Gemini may display inaccurate info, including about people,so double-click its responses. Your Privacy and Gemini Apps
+                Gemini may display inaccurate info, including about people,so double-click its responses. Your Privacy and Gemini App
             </p>
         </div>
     </div>
