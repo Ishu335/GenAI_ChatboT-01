@@ -7,7 +7,7 @@ HarmBlockThreshold,
 // IMPORTANT: Do NOT hardcode your API key directly in client-side code like this in a production environment.
 // This is for demonstration purposes only. In a real application, fetch this securely from a backend
 // or use environment variables for server-side applications.
-// const API_KEY = "AIzaSyDYfhe3HMy_MM--3OfWCp-_3n_GlJ3rAs0"; // Replace with your actual API key, ideally from a secure source
+const API_KEY = "AIzaSyDYfhe3HMy_MM--3OfWCp-_3n_GlJ3rAs0"; // Replace with your actual API key, ideally from a secure source
 const MODEL_NAME = "gemini-1.5-flash";
 
 async function runChat(prompt) {
