@@ -12,7 +12,8 @@ const ContextProvider = (props) => {
     const [loading, setLoading] = useState(false);
     const [resultData, setResultData] = useState("");
 
-    // Typing effect function
+    // Typing effect function hereused as useEffect
+    // This function will be used to simulate typing effect by adding words one by one  
     const delayPara = (index, nextWord) => {
     setTimeout(() => {
         setResultData((prev) => prev + nextWord);
@@ -23,7 +24,7 @@ const ContextProvider = (props) => {
         setResultData("");
         setLoading(true);
         setShowResult(true);
-        // setPrevPrompt(prev => [...prev, input]); // Add current input to previous prompts
+        
         // Add current input to previous prompts only if it's not empty
         if (input.trim() !== "") {
             setRecentPrompt(input);
