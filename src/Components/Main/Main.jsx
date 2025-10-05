@@ -11,7 +11,7 @@ const Main = () => {
             <p>Gimini</p>
             <img src={assets.user_icon} alt=""/>
         </div>
-        <div className="main-container">
+        <div className="main-container">                                                   
             {
                 !showResult 
                 ?<>
