@@ -1,0 +1,5 @@
+fastapi
+uviorn
+google-genai
+axios
+

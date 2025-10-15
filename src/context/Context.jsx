@@ -1,7 +1,7 @@
 
 import { createContext, useState } from "react";
 import runChat from "../Config/gemini";
-
+import API from "../api";
 export const Context = createContext();
 
 const ContextProvider = (props) => {
@@ -19,19 +19,8 @@ const ContextProvider = (props) => {
         setResultData((prev) => prev + nextWord);
     }, 75 * index);
     };
+    const filterResponse = (response) => {
 
-    const onSent = async (prompt) => { // 'prompt' parameter is redundant if you're using 'input' state
-        setResultData("");
-        setLoading(true);
-        setShowResult(true);
-        
-        // Add current input to previous prompts only if it's not empty
-        if (input.trim() !== "") {
-            setRecentPrompt(input);
-            setPrevPrompt((prev) => [...prev, input]);
-        }
-        
-        const response = await runChat(input);
         
         // Process response for bold tags
         let responseArray = response.split("**");
@@ -55,14 +44,39 @@ const ContextProvider = (props) => {
             delayPara(i, nextWord + " "); // Add a space back after each word
         }
 
-        // Set the full result after the typing effect has started or if you want it immediately visible
-        // If you want the typing effect to build the final string, you should NOT set the full string here.
-        // Instead, the delayPara should be the sole updater of setResultData.
-        // For a typing effect, typically you would not set the whole resultData at once after the loop.
-        // If the intention is for `delayPara` to build the string, then `setResultData(finalResponse)` here would override it.
-        // Let's assume you want the typing effect to be the source of truth for resultData.
-        // So, we will remove `setResultData(finalResponse);` from here.
+    };
 
+    const sendMessage = async (prompt) => {
+
+        const response = await API.post("/send/prompt", {
+        prompt,  // field name must match backend model
+        });
+
+        // if (!response.ok) {
+        //     throw new Error("Failed to send prompt");
+        // }
+
+        
+        console.log("Response received from backend:", response);
+        return response.data.response
+    }
+
+    const onSent = async (prompt) => { // 'prompt' parameter is redundant if you're using 'input' state
+        setResultData("");
+        setLoading(true);
+        setShowResult(true);
+        
+        // Add current input to previous prompts only if it's not empty
+        if (input.trim() !== "") {
+            setRecentPrompt(input);
+            setPrevPrompt((prev) => [...prev, input]);
+        }
+        
+        const response = await sendMessage(input);
+        console.log("Response from sendMessage:", response);
+        
+        filterResponse(response);
+        
         setLoading(false);
         setInput("");
     };
