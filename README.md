@@ -71,7 +71,7 @@ Double-click the file:
 
 **install.bat**
 
-This script will automatically:
+This script will automatically run the Project:
 1. Create a virtual environment for the backend  
 2. Install backend dependencies (`FastAPI`, `Uvicorn`, etc.)  
 3. Install frontend dependencies (`npm install`)  
