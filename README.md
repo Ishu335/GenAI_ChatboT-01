@@ -1,51 +1,86 @@
-# 🌌 Gemini Clone (React + FastAPI)
+# 🌟 Gemini Clone (React + FastAPI)
 
-A modern full-stack **Gemini Clone** built using **React (frontend)** and **FastAPI (backend)**.  
-The project demonstrates seamless API integration using **Axios**, **CORS**, and **RESTful endpoints** — mimicking an AI-chat style application.
-
+A **Gemini-style AI Chat Application** built with **React (Frontend)** and **FastAPI (Backend)**.  
+This project replicates the elegant and responsive UI of Google Gemini, combined with AI text generation using an API key.  
+It includes an **automatic setup script (`install.bat`)** for easy installation on Windows.
 ---
 
 ## 🚀 Features
 
-- ⚛️ **React (Vite)** frontend for fast and responsive UI  
-- 🐍 **FastAPI** backend for high-performance API responses  
-- 🌐 **Axios** used for frontend-to-backend communication  
-- 🔐 **CORS** enabled for cross-origin API access  
-- 📦 Modular code structure for scalability  
-- 🎨 Clean and responsive chat UI (Gemini-style layout)
+- 🧠 AI-powered chat using FastAPI backend  
+- ⚡ Built with React + Vite for lightning-fast UI  
+- 🔐 Secure API key integration  
+- 🧩 Modular, reusable components  
+- 📱 Fully responsive layout  
+- 🌈 Clean, modern interface inspired by Google Gemini  
 
 ---
 
-## 🧰 Tech Stack
+## 🛠 Tech Stack
 
-| Layer | Technology |
-|--------|-------------|
-| Frontend | React + Vite + Axios |
-| Backend | FastAPI + Uvicorn |
-| Styling | CSS / TailwindCSS |
-| API Handling | Axios |
-| Middleware | CORS |
-| Language | JavaScript (Frontend), Python (Backend) |
+### Frontend
+- **React + Vite**
+- **Axios** for API requests
+- **CSS / TailwindCSS** for styling
+
+### Backend
+- **FastAPI** for serving AI responses
+- **Python** for API handling
+- **Uvicorn** for local server
+- **dotenv** for environment variable management
 
 ---
 
-## 📁 Folder Structure
+## 📁 Project Structure
+
 ```
 gemini-clone/
 ├── backend/
-│ ├── main.py # FastAPI entry point
-│── src/
-│ │ ├── components/ # Reusable React components
-│ │ ├── pages/ # Page components
-│ │ ├── services/axios.js # Axios configuration
-│ │ ├── App.jsx # Main React app
-│ │ └── main.jsx # Entry point
+│ ├── main.py # FastAPI backend entry
+│ ├── requirements.txt # Python dependencies
+│ ├── .env # API key stored here
+│ └── pycache/
+|
+│ ├── src/
+│ │ ├── components/ # Chat, Sidebar, MessageBubble, etc.
+│ │ ├── App.jsx # Main React component
+│ │ ├── main.jsx # React entry point
+│ │ ├── index.css # Global CSS
+│ │ └── api/axios.js # Axios configuration for backend API
 │ ├── package.json
-│ └── vite.config.js
-│
+│ ├── vite.config.js
+│ └── .env # Frontend API URL (optional)
+|── requirements.txt
+│── install.bat
+├── dockerfile # (Optional) for containerization
 └── README.md
 ```
 
-## Expanding the ESLint configuration
+## 🔄 How It Works
+
+- The React frontend captures user input.
+- It sends a POST request to the FastAPI backend.
+- The backend processes the request using your API key (e.g., Gemini, OpenAI, etc.) and returns AI-generated text.
+- The frontend displays the response in the chat UI.
+
+## ⚙️ Quick Start (Windows Users)
+
+### ▶️ Step 1: Run the Installer
+
+Double-click the file:
+
+**install.bat**
+
+This script will automatically:
+1. Create a virtual environment for the backend  
+2. Install backend dependencies (`FastAPI`, `Uvicorn`, etc.)  
+3. Install frontend dependencies (`npm install`)  
+4. Start both servers — backend (FastAPI) and frontend (React)
+
+After a few moments, your Gemini Clone app will be running!
+
+---
+
+## Screenshot
 <img src="https://github.com/Ishu335/gemini-clone/blob/master/Images/Gemini%201.png" atl="Gemini CLone" ></img>
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+
