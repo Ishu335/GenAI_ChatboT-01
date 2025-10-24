@@ -1,4 +1,4 @@
-# 🌟 Gemini Clone (React + FastAPI)
+# 🌟 GenAI ChatBot (React + FastAPI)
 
 A **Gemini-style AI Chat Application** built with **React (Frontend)** and **FastAPI (Backend)**.  
 This project replicates the elegant and responsive UI of Google Gemini, combined with AI text generation using an API key.  
