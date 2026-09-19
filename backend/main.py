@@ -5,6 +5,14 @@ from google import genai
 from google.genai import types
 from fastapi import FastAPI, Request, HTTPException
 from fastapi.middleware.cors import CORSMiddleware  #enable the cross object resourse sources
+# Transformers
+from transformers import (
+    T5Tokenizer,
+    Trainer,
+    TrainingArguments,
+    T5ForConditionalGeneration
+)
+model=T5ForConditionalGeneration.from_pretrained("t5-small")
 
 app = FastAPI()
 
@@ -21,7 +29,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-API_KEY = "AIzaSyAnA0h_y57Stbf-haSF_UwSzLn7MLxD7SQ" # Replace with your key
+# Replace with your key
 client = genai.Client(api_key=API_KEY)
 
 class Prompt(BaseModel):

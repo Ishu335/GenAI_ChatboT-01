@@ -3,3 +3,8 @@ uviorn
 google-genai
 axios
 
+# transformers
+torch 
+transformers 
+accelerate 
+pillow
