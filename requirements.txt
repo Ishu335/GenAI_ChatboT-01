@@ -1,5 +1,5 @@
 fastapi
-uviorn
+uvicorn
 google-genai
 axios
 
@@ -8,3 +8,4 @@ torch
 transformers 
 accelerate 
 pillow
+torchvision
