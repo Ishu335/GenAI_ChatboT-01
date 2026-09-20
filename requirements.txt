@@ -9,3 +9,8 @@ transformers
 accelerate 
 pillow
 torchvision
+
+# Agentic Ai
+langgraph
+langchain
+langchain_huggingface

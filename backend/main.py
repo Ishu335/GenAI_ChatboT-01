@@ -1,9 +1,7 @@
 from pydantic import BaseModel
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from transformers import pipeline
-
-
+from llm.model import coding_model,general_purpose_model
 app = FastAPI()
 
 origins = [
@@ -19,13 +17,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-
-# Load model ONCE when FastAPI starts
-pipe = pipeline(
-    "text-generation",
-    model="Qwen/Qwen3-0.6B",
-    device_map="auto"
-)
 
 
 class Prompt(BaseModel):
@@ -44,11 +35,17 @@ async def generate(request: Prompt):
         }
     ]
 
-    result = pipe(
-        messages,
-        max_new_tokens=100
-    )
+    if "code" in user_prompt.lower() or "python" in user_prompt.lower():
+            response = coding_model().invoke(messages)
+    else:
+        response = general_purpose_model().invoke(messages)
 
-    return {
-        "response": result[0]["generated_text"][-1]["content"]
-    }
+    
+    print("\n\n\n Result: ",response)
+    return response
+    # return {
+    #     "response": result[0]["generated_text"][-1]["content"]
+    # }
+
+
+
