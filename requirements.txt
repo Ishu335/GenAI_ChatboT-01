@@ -10,7 +10,14 @@ accelerate
 pillow
 torchvision
 
+<<<<<<< HEAD
+#tools
+langchain-community
+wikipedia
+ddgs
+=======
 # Agentic Ai
 langgraph
 langchain
 langchain_huggingface
+>>>>>>> 5f324a17e5cfa6a4df6c2a32f3bc067208cd9dbd
