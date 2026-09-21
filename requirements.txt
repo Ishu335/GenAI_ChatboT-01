@@ -9,3 +9,8 @@ transformers
 accelerate 
 pillow
 torchvision
+
+#tools
+langchain-community
+wikipedia
+ddgs

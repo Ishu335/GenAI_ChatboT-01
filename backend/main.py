@@ -1,14 +1,15 @@
 from pydantic import BaseModel
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from transformers import pipeline
 
+from LLM.model.model import general_purpose_model
+from tools.tools import search
 
 app = FastAPI()
 
 origins = [
     "http://localhost:5173",
-    "http://127.0.0.1:5173"
+    "http://127.0.0.1:5173",
 ]
 
 app.add_middleware(
@@ -20,35 +21,23 @@ app.add_middleware(
 )
 
 
-# Load model ONCE when FastAPI starts
-pipe = pipeline(
-    "text-generation",
-    model="Qwen/Qwen3-0.6B",
-    device_map="auto"
-)
+
+general_llm = general_purpose_model()
 
 
 class Prompt(BaseModel):
     prompt: str
+    model: str = "general"
 
 
 @app.post("/send/prompt")
 async def generate(request: Prompt):
 
     user_prompt = request.prompt
-
-    messages = [
-        {
-            "role": "user",
-            "content": user_prompt
-        }
-    ]
-
-    result = pipe(
-        messages,
-        max_new_tokens=100
-    )
-
+    search_responce=search(user_prompt)
+   
+    response = general_llm.invoke(f"This is user Prompt : {user_prompt} Use this information to generated meaninfull information for user {search_responce}")
     return {
-        "response": result[0]["generated_text"][-1]["content"]
+        "response": response,
+        "model": request.model
     }
