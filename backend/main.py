@@ -2,9 +2,8 @@ from pydantic import BaseModel
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from LLM.model.model import general_purpose_model
+from LLM.model import general_purpose_model
 from tools.tools import search
-from llm.model import coding_model,general_purpose_model
 
 app = FastAPI()
 
@@ -38,7 +37,7 @@ async def generate(request: Prompt):
     user_prompt = request.prompt
     search_responce=search(user_prompt)
    
-    response = general_llm.invoke(f"This is user Prompt : {user_prompt} Use this information to generated meaninfull information for user {search_responce}")
+    response = general_llm.invoke(f"{user_prompt} Use this information to generated meaninfull information for user {search_responce} and filter is out in your way")
     return {
         "response": response,
         "model": request.model
