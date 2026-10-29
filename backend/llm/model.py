@@ -8,8 +8,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 def general_purpose_model():
     hf_pipe = pipeline(
         "text-generation",
-        # model="Qwen/Qwen2.5-0.5B-Instruct",
-        model="google/flan-t5-small",
+        model="Qwen/Qwen2.5-0.5B-Instruct",
         device_map="auto",
         max_new_tokens=256,
         return_full_text=False,
