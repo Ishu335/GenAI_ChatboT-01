@@ -47,3 +47,9 @@ htmlcov/
 
 # Jupyter
 .ipynb_checkpoints/
+
+# Database files
+.sqlite3
+# Generated ChromaDB vector stores
+backend/data/vector_store/
+backend/data/vectorstore/
